@@ -27,7 +27,7 @@ v <- data.frame(date = calendar[1:nrow(jc)], jc)
 ```
 
 
-```{r, include=TRUE, echo = TRUE}
+```{r, include=TRUE, echo = FALSE}
 kable(v, padding = 2, caption = 'Information')
 ```
 
