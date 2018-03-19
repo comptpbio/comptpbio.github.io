@@ -17,17 +17,11 @@ Topic:  Data analytics methods for crop improvement ??
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 
-
+jc <- read.table('jclub.csv', sep=',', header=TRUE)
 DOS =  as.Date("02/03/18",  "%d/%m/%y")
 calendar <- seq(DOS, as.Date("01/06/18",  "%d/%m/%y"), by=14)
 
-d1 <- c('Paine et. al. (2012) How to fit nonlinear plant growth models and calculate growth rates: an update for ecologists\n', 'Tracey et. al. (2015) Beyond Bar and Line Graphs: Time for a New Data Presentation Paradigm\n')
-d2 <- c('Rapid Cycling Genomic Selection in a Multiparental Tropical Maize Population\n','Extensive gene content variation in the Brachypodium distachyon pan-genome correlates with population structure\n')
-d3 = c('TBD')
-d7 = d6 = d5 = d4 = d3
-papers <- rbind(d1,d2,d3,d4,d5,d6,d7)
-
-v <- data.frame(date = calendar, Papers = papers)
+v <- data.frame(date = calendar[1:nrow(jc)], jc)
 
 
 ```
