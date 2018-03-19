@@ -3,7 +3,7 @@ title: "Grant calls"
 output: html_document
 ---
 
-```{r setup, inclsude=FALSE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(rvest)
 library(stringr)
