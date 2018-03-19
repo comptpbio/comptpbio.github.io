@@ -1,0 +1,17 @@
+name: "Computational Biology-website"
+output_dir: "."
+navbar:
+  title: "Computational Biology Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Journal Club"     ##### the new
+      href: JournalClub.html  ##### stuff
+    - text: "GrantOpportunities"
+      href: grantsearchlist.html
+    - text: "About"
+      href: about.html
+      output:
+  html_document:
+    theme: flatly
+    css: style.css
