@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>boxplotpvalue</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -199,51 +199,46 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">boxplotpvalue</h1>
 
 </div>
 
 
-<div id="niabs-journal-club" class="section level2">
-<h2>NIAB’s Journal club</h2>
-<p>Time: 9.00 to 10.00, normally on Friday Location: John Bingham’s dining room Topic: Data analytics methods for crop improvement ??</p>
-<table>
-<caption>Information</caption>
-<thead>
-<tr class="header">
-<th align="left">date</th>
-<th align="right">Day</th>
-<th align="left">Papers</th>
-<th align="left">R_Question</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">2018-03-02</td>
-<td align="right">1</td>
-<td align="left">1) Paine et al. (2012) How to fit nonlinear plant growth models and calculate growth rates: an update for ecologists. Methods in Ecology and Evolution. 3(2):245-256. 2) Tracey et al. (2015) Beyond Bar and Line Graphs: Time for a New Data Presentation Paradigm. PLOS Biology.</td>
-<td align="left"><a href=boxplotpvalue.html>Generate boxplots showing Pvalues</a></td>
-</tr>
-<tr class="even">
-<td align="left">2018-03-16</td>
-<td align="right">2</td>
-<td align="left">1) Rapid Cycling Genomic Selection in a Multiparental Tropical Maize Population. G3 (Bethesda). 2017 Jul; 7(7): 2315–2326. 2) The statistical analysis of multi-environmental data: modelling GEI and its genetic basis. Front Physiol. 2013; 4: 44.</td>
-<td align="left"><a href=QTLplot.html>Produce plots of QTL vs Contribution of each parent</a></td>
-</tr>
-<tr class="odd">
-<td align="left">2018-03-30</td>
-<td align="right">3</td>
-<td align="left">1) Gordon et al. (2017)Extensive gene content variation in the Brachypodium distachyon pan-genome correlates with population structure. Nature Communications. 8:2184.</td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left">2018-04-13</td>
-<td align="right">4</td>
-<td align="left">TBD</td>
-<td align="left">-</td>
-</tr>
-</tbody>
-</table>
-</div>
+<pre class="r"><code>knitr::opts_chunk$set(echo = TRUE)
+
+# Install / Call library
+
+library(&#39;multcomp&#39;)
+
+# Using the warpbreaks from multcomp
+data(warpbreaks)
+
+
+# Produce Summary
+summary(warpbreaks)</code></pre>
+<pre><code>##      breaks      wool   tension
+##  Min.   :10.00   A:27   L:18   
+##  1st Qu.:18.25   B:27   M:18   
+##  Median :26.00          H:18   
+##  Mean   :28.15                 
+##  3rd Qu.:34.00                 
+##  Max.   :70.00</code></pre>
+<pre class="r"><code>amod &lt;- aov(breaks ~ tension, data = warpbreaks)
+
+
+### specify all pair-wise comparisons among levels of variable &quot;tension&quot; using Tukey test
+tuk &lt;- glht(amod, linfct = mcp(tension = &quot;Tukey&quot;))
+
+### extract information
+tuk.cld &lt;- cld(tuk)
+
+### use sufficiently large upper margin
+old.par &lt;- par(mai=c(1,1,1.25,1), no.readonly = TRUE)
+
+### plot
+plot(tuk.cld, col=&#39;red&#39;)</code></pre>
+<p><img src="boxplotpvalue_files/figure-html/setup-1.png" width="672" /></p>
+<pre class="r"><code>par(old.par)</code></pre>
 
 
 

@@ -1,0 +1,36 @@
+---
+title: "boxplotpvalue"
+output: html_document
+---
+
+```{r setup, include=TRUE, echo=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Install / Call library
+
+library('multcomp')
+
+# Using the warpbreaks from multcomp
+data(warpbreaks)
+
+
+# Produce Summary
+summary(warpbreaks)
+
+amod <- aov(breaks ~ tension, data = warpbreaks)
+
+
+### specify all pair-wise comparisons among levels of variable "tension" using Tukey test
+tuk <- glht(amod, linfct = mcp(tension = "Tukey"))
+
+### extract information
+tuk.cld <- cld(tuk)
+
+### use sufficiently large upper margin
+old.par <- par(mai=c(1,1,1.25,1), no.readonly = TRUE)
+
+### plot
+plot(tuk.cld, col='red')
+par(old.par)
+
+```

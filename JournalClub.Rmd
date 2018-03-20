@@ -1,16 +1,16 @@
 ---
-title: "Journal Club"
-author: "CompBio"
-date: "19 March 2018"
+title: ""
+author: ""
+date: " "
 output: html_document
 ---
 
 
 ## NIAB's Journal club
 
-Time: 9.00 to 10.00, normally on Friday
-Location: John Bingham's dining room
-Topic:  Data analytics methods for crop improvement ??
+Time: 9.00 to 10.00, normally on Friday \n
+Location: John Bingham's dining room \n
+Topic:  Data analytics methods for crop improvement ??\n
 
 
 ```{r setup, include=FALSE}
@@ -29,6 +29,7 @@ v <- data.frame(date = calendar[1:nrow(jc)], jc)
 
 ```{r, include=TRUE, echo = FALSE}
 kable(v, padding = 2, caption = 'Information')
+
 ```
 
 

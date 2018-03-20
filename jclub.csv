@@ -1,5 +1,5 @@
 Day,Papers,R_Question
-1,1) Paine et al. (2012) How to fit nonlinear plant growth models and calculate growth rates: an update for ecologists. Methods in Ecology and Evolution.  3(2):245-256.  2) Tracey et al. (2015) Beyond Bar and Line Graphs: Time for a New Data Presentation Paradigm. PLOS Biology., Generate boxplots showing Pvalues.
-2,1) Rapid Cycling Genomic Selection in a Multiparental Tropical Maize Population.  G3 (Bethesda). 2017 Jul; 7(7): 2315–2326. 2) The statistical analysis of multi-environmental data: modelling GEI and its genetic basis. Front Physiol. 2013; 4: 44.,Produce plots of QTL vs Contribution of each parent
+1,1) Paine et al. (2012) How to fit nonlinear plant growth models and calculate growth rates: an update for ecologists. Methods in Ecology and Evolution.  3(2):245-256.  2) Tracey et al. (2015) Beyond Bar and Line Graphs: Time for a New Data Presentation Paradigm. PLOS Biology., <a href="boxplotpvalue.html">Generate boxplots showing Pvalues</a> 
+2,1) Rapid Cycling Genomic Selection in a Multiparental Tropical Maize Population.  G3 (Bethesda). 2017 Jul; 7(7): 2315–2326. 2) The statistical analysis of multi-environmental data: modelling GEI and its genetic basis. Front Physiol. 2013; 4: 44., <a href="QTLplot.html">Produce plots of QTL vs Contribution of each parent</a>
 3,1) Gordon et al. (2017)Extensive gene content variation in the Brachypodium distachyon pan-genome correlates with population structure. Nature Communications. 8:2184.,
 4,TBD,-
