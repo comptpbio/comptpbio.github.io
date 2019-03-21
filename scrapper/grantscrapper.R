@@ -10,9 +10,9 @@ call <- read_html("bbsrc.html") %>%
   html_nodes("h3 a") %>%
   html_text()
 
-batch_titles <- batches %>%
-  html_nodes("href") %>%
-  html_text()
+#batch_titles <- batches %>%
+#  html_nodes("href") %>%
+#  html_text()
 
 
 url <- read_html("bbsrc.html") %>%
@@ -25,4 +25,5 @@ date <- read_html("bbsrc.html") %>%
   html_nodes("time") %>%
   html_text()
 
-calltable <- data.frame(callname = call, deadline = date, call_url = paste('https://www.bbsrc.ac.uk', url, sep=''))
+calltable <- data.frame(callname = call, deadline = date, call_url = 
+                          paste('https://www.bbsrc.ac.uk', url, sep=''))

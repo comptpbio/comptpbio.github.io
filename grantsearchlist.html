@@ -20,8 +20,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -30,10 +30,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -88,8 +90,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -105,7 +113,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -125,6 +132,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -146,18 +190,77 @@ $(document).ready(function () {
 });
 </script>
 
-
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -216,144 +319,124 @@ $(document).ready(function () {
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Discovery Fellowships</td>
-<td align="left">9 May 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/discovery-fellowships" class="uri">https://www.bbsrc.ac.uk/funding/filter/discovery-fellowships</a></td>
-</tr>
-<tr class="even">
-<td align="left">David Phillips Fellowships</td>
-<td align="left">9 May 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/david-phillips" class="uri">https://www.bbsrc.ac.uk/funding/filter/david-phillips</a></td>
-</tr>
-<tr class="odd">
-<td align="left">New Investigator Scheme</td>
-<td align="left">24 April 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/new-investigator" class="uri">https://www.bbsrc.ac.uk/funding/filter/new-investigator</a></td>
-</tr>
-<tr class="even">
-<td align="left">BBSRC-Brazil (FAPESP) joint funding of research</td>
-<td align="left">24 April 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/fapesp-joint-funding-research" class="uri">https://www.bbsrc.ac.uk/funding/filter/fapesp-joint-funding-research</a></td>
-</tr>
-<tr class="odd">
-<td align="left">Industrial Partnership Awards (IPA)</td>
-<td align="left">24 April 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/industrial-partnership-awards" class="uri">https://www.bbsrc.ac.uk/funding/filter/industrial-partnership-awards</a></td>
-</tr>
-<tr class="even">
-<td align="left">‘Stand-alone’ LINK</td>
-<td align="left">24 April 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/stand-alone-link" class="uri">https://www.bbsrc.ac.uk/funding/filter/stand-alone-link</a></td>
-</tr>
-<tr class="odd">
-<td align="left">Responsive mode application deadlines</td>
-<td align="left">24 April 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/apply/deadlines" class="uri">https://www.bbsrc.ac.uk/funding/apply/deadlines</a></td>
-</tr>
-<tr class="even">
-<td align="left">Machine Learning to Generate New Biological Understanding 2018</td>
-<td align="left">24 April 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/machine-learning-to-generate-new-biological-understanding-2018" class="uri">https://www.bbsrc.ac.uk/funding/filter/machine-learning-to-generate-new-biological-understanding-2018</a></td>
-</tr>
-<tr class="odd">
-<td align="left">Enterprise Fellowships</td>
-<td align="left">16 April 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/enterprise-fellowships" class="uri">https://www.bbsrc.ac.uk/funding/filter/enterprise-fellowships</a></td>
-</tr>
-<tr class="even">
-<td align="left">ERA-HDHL Call for Transnational Research Proposals: “Nutrition &amp; the Epigenome”</td>
-<td align="left">12 April 2018, 00:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/era-hdhl-call-for-transnational-research-proposals-nutrition-the-epigenome" class="uri">https://www.bbsrc.ac.uk/funding/filter/era-hdhl-call-for-transnational-research-proposals-nutrition-the-epigenome</a></td>
-</tr>
-<tr class="odd">
 <td align="left">Follow-on Funding call</td>
-<td align="left">11 April 2018, 16:00</td>
+<td align="left">10 Jul 2019</td>
 <td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/follow-on" class="uri">https://www.bbsrc.ac.uk/funding/filter/follow-on</a></td>
 </tr>
 <tr class="even">
-<td align="left">BBSRC-NRF Newton-Utafiti fund call in enhancing ruminant livestock productivity</td>
-<td align="left">10 April 2018, 00:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/bbsrc-nrf-newton-utafiti-fund-call-in-enhancing-ruminant-livestock-productivity" class="uri">https://www.bbsrc.ac.uk/funding/filter/bbsrc-nrf-newton-utafiti-fund-call-in-enhancing-ruminant-livestock-productivity</a></td>
+<td align="left">Discovery Fellowships</td>
+<td align="left">- 9 Oct 2019</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/discovery-fellowships" class="uri">https://www.bbsrc.ac.uk/funding/filter/discovery-fellowships</a></td>
 </tr>
 <tr class="odd">
-<td align="left">UKRI Centres for Doctoral Training in Applications and Implications of Artificial Intelligence</td>
-<td align="left">28 March 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/ukri-centres-doctoral-training-in-artificial-intelligence" class="uri">https://www.bbsrc.ac.uk/funding/filter/ukri-centres-doctoral-training-in-artificial-intelligence</a></td>
+<td align="left">David Phillips Fellowships</td>
+<td align="left">9 May 2019, 16:00</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/david-phillips" class="uri">https://www.bbsrc.ac.uk/funding/filter/david-phillips</a></td>
 </tr>
 <tr class="even">
-<td align="left">Cross-disciplinary mental health network plus call</td>
-<td align="left">22 March 2018, 16:00</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/2017-cross-disciplinary-mental-health-network-plus-call" class="uri">https://www.bbsrc.ac.uk/funding/filter/2017-cross-disciplinary-mental-health-network-plus-call</a></td>
+<td align="left">A Combined Food Systems Approach to Scaling-up Interventions to Address the Double Burden of Malnutrition</td>
+<td align="left">9 May 2019, 16:00</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/2019-double-burden-malnutrition" class="uri">https://www.bbsrc.ac.uk/funding/filter/2019-double-burden-malnutrition</a></td>
 </tr>
 <tr class="odd">
-<td align="left">International Travel Award Scheme (ITAS)</td>
-<td align="left">5 Jan 2018</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/itas" class="uri">https://www.bbsrc.ac.uk/funding/filter/itas</a></td>
+<td align="left">UKRI-BBSRC Doctoral Training Partnerships</td>
+<td align="left">7 May 2019, 16:00</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/2019-doctoral-training-partnerships-programme-3" class="uri">https://www.bbsrc.ac.uk/funding/filter/2019-doctoral-training-partnerships-programme-3</a></td>
 </tr>
 <tr class="even">
-<td align="left">Knowledge Transfer Partnerships</td>
-<td align="left">- 14 Mar 2018</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/knowledge-transfer-partnerships" class="uri">https://www.bbsrc.ac.uk/funding/filter/knowledge-transfer-partnerships</a></td>
+<td align="left">Industrial Partnership Awards (IPA)</td>
+<td align="left">1 May 2019, 16:00</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/industrial-partnership-awards" class="uri">https://www.bbsrc.ac.uk/funding/filter/industrial-partnership-awards</a></td>
+</tr>
+<tr class="odd">
+<td align="left">BBSRC-Brazil (FAPESP) joint funding of research</td>
+<td align="left">30 April 2019, 16:00</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/fapesp-joint-funding-research" class="uri">https://www.bbsrc.ac.uk/funding/filter/fapesp-joint-funding-research</a></td>
+</tr>
+<tr class="even">
+<td align="left">‘Stand-alone’ LINK</td>
+<td align="left">30 April 2019, 16:00</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/stand-alone-link" class="uri">https://www.bbsrc.ac.uk/funding/filter/stand-alone-link</a></td>
+</tr>
+<tr class="odd">
+<td align="left">New Investigator Scheme</td>
+<td align="left">30 April 2019, 16:00</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/new-investigator" class="uri">https://www.bbsrc.ac.uk/funding/filter/new-investigator</a></td>
+</tr>
+<tr class="even">
+<td align="left">Responsive mode application deadlines</td>
+<td align="left">30 April 2019, 16:00</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/apply/deadlines" class="uri">https://www.bbsrc.ac.uk/funding/apply/deadlines</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Enterprise Fellowships</td>
+<td align="left">30 April 2019, 16:00</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/enterprise-fellowships" class="uri">https://www.bbsrc.ac.uk/funding/filter/enterprise-fellowships</a></td>
+</tr>
+<tr class="even">
+<td align="left">Returners to Research Fellowships</td>
+<td align="left">17 April 2019, 17:00</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/returners-to-research" class="uri">https://www.bbsrc.ac.uk/funding/filter/returners-to-research</a></td>
 </tr>
 <tr class="odd">
 <td align="left">FAPESP Pump-Priming Awards (FAPPA)</td>
-<td align="left">5 Jan 2018</td>
+<td align="left">11 Dec 2018</td>
 <td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/fapesp-pump-priming" class="uri">https://www.bbsrc.ac.uk/funding/filter/fapesp-pump-priming</a></td>
 </tr>
 <tr class="even">
-<td align="left">Professional Internships for PhD Students</td>
-<td align="left">- 19 Feb 2018</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/professional-internships" class="uri">https://www.bbsrc.ac.uk/funding/filter/professional-internships</a></td>
-</tr>
-<tr class="odd">
-<td align="left">Follow-on Funding Pathfinder call</td>
-<td align="left">15 Nov 2017</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/follow-on-pathfinder" class="uri">https://www.bbsrc.ac.uk/funding/filter/follow-on-pathfinder</a></td>
-</tr>
-<tr class="even">
 <td align="left">Exploring Innovation Seminars</td>
-<td align="left">- 7 Feb 2018</td>
+<td align="left">- 12 Feb 2019</td>
 <td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/exploring-innovation-seminars" class="uri">https://www.bbsrc.ac.uk/funding/filter/exploring-innovation-seminars</a></td>
 </tr>
 <tr class="odd">
-<td align="left">Returners to Research Fellowships</td>
-<td align="left"></td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/returners-to-research" class="uri">https://www.bbsrc.ac.uk/funding/filter/returners-to-research</a></td>
+<td align="left">Follow-on Funding Pathfinder call</td>
+<td align="left">28 Sep 2018</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/follow-on-pathfinder" class="uri">https://www.bbsrc.ac.uk/funding/filter/follow-on-pathfinder</a></td>
 </tr>
 <tr class="even">
-<td align="left">Breakthrough Technologies to Advance Crop Breeding</td>
-<td align="left">- 24 Jan 2018</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/2017-breakthrough-technologies-to-advance-crop-breeding" class="uri">https://www.bbsrc.ac.uk/funding/filter/2017-breakthrough-technologies-to-advance-crop-breeding</a></td>
+<td align="left">International Travel Award Scheme (ITAS)</td>
+<td align="left">- 31 Jan 2019</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/itas" class="uri">https://www.bbsrc.ac.uk/funding/filter/itas</a></td>
 </tr>
 <tr class="odd">
-<td align="left">ECR Policy Lab on the determinants of food choice for healthy and sustainable diets</td>
-<td align="left">17 Nov 2017</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/2018-ecr-policy-lab-on-the-determinants-of-food-choice-for-healthy-and-sustainable-diets" class="uri">https://www.bbsrc.ac.uk/funding/filter/2018-ecr-policy-lab-on-the-determinants-of-food-choice-for-healthy-and-sustainable-diets</a></td>
+<td align="left">Knowledge Transfer Partnerships</td>
+<td align="left">31 Oct 2018</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/knowledge-transfer-partnerships" class="uri">https://www.bbsrc.ac.uk/funding/filter/knowledge-transfer-partnerships</a></td>
 </tr>
 <tr class="even">
+<td align="left">Professional Internships for PhD Students</td>
+<td align="left">- 30 Jan 2019</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/professional-internships" class="uri">https://www.bbsrc.ac.uk/funding/filter/professional-internships</a></td>
+</tr>
+<tr class="odd">
+<td align="left">Building Collaboration at the Physics of Life Interface</td>
+<td align="left">1 May 2018</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/2018-physics-of-life" class="uri">https://www.bbsrc.ac.uk/funding/filter/2018-physics-of-life</a></td>
+</tr>
+<tr class="even">
+<td align="left">UK-Canada: AAFC-IWYP aligned call</td>
+<td align="left">- 16 Jan 2019</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/2018-uk-canada-aafc-iwyp-aligned-call" class="uri">https://www.bbsrc.ac.uk/funding/filter/2018-uk-canada-aafc-iwyp-aligned-call</a></td>
+</tr>
+<tr class="odd">
 <td align="left">Innovator of the Year</td>
-<td align="left">- 23 Jan 2018</td>
+<td align="left">26 Sep 2018</td>
 <td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/innovator-of-the-year" class="uri">https://www.bbsrc.ac.uk/funding/filter/innovator-of-the-year</a></td>
 </tr>
-<tr class="odd">
-<td align="left">BBSRC NIBB Phase II</td>
-<td align="left">9 Oct 2017</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/networks-in-industrial-biotechnology-bioenergy-phase2" class="uri">https://www.bbsrc.ac.uk/funding/filter/networks-in-industrial-biotechnology-bioenergy-phase2</a></td>
-</tr>
 <tr class="even">
-<td align="left">BBSRC/NERC Joint Call in Aquaculture: Collaborative Research and Innovation</td>
-<td align="left">- 17 Jan 2018</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/uk-aquaculture-collaborative-projects" class="uri">https://www.bbsrc.ac.uk/funding/filter/uk-aquaculture-collaborative-projects</a></td>
+<td align="left">Strategic Longer and Larger grants: Frontier bioscience</td>
+<td align="left">- 16 Jan 2019</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/lola" class="uri">https://www.bbsrc.ac.uk/funding/filter/lola</a></td>
 </tr>
 <tr class="odd">
 <td align="left">Annual focus for responsive mode proposals under the welfare of managed animals priority</td>
-<td align="left">14 Jul 2017</td>
+<td align="left">18 Jun 2018</td>
 <td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/2018-welfare-of-managed-animals1" class="uri">https://www.bbsrc.ac.uk/funding/filter/2018-welfare-of-managed-animals1</a></td>
 </tr>
 <tr class="even">
-<td align="left">New approaches to ageing research: a joint BBSRC-NC3Rs funding highlight notice</td>
-<td align="left">- 17 Jan 2018</td>
-<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/2017-new-approaches-to-ageing-research" class="uri">https://www.bbsrc.ac.uk/funding/filter/2017-new-approaches-to-ageing-research</a></td>
+<td align="left">UK Nutrition Research Partnership (UK NRP) Collaborative Awards: Outline stage</td>
+<td align="left">- 15 Jan 2019</td>
+<td align="left"><a href="https://www.bbsrc.ac.uk/funding/filter/2018-uk-nutrition-research-partnership-collaborative-awards" class="uri">https://www.bbsrc.ac.uk/funding/filter/2018-uk-nutrition-research-partnership-collaborative-awards</a></td>
 </tr>
 </tbody>
 </table>
