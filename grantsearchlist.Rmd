@@ -45,11 +45,11 @@ for(cname in call){
     u <- rbind(u, 'check web')
   } else{
     u <- rbind(u, strsplit(strsplit(date[i[length(i)]], '\n\n\n')[[1]][2], 
-                         '\n\n')[[1]])
+                         '\n')[[1]])
   }
 }
 
-calltable <- data.frame(callname = call, deadline = u, 
+calltable <- data.frame(callname = call, deadline = u[,1], 
                         call_url = paste('https://www.bbsrc.ac.uk', url, sep=''))
 ```
 
