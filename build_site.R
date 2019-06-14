@@ -1,7 +1,6 @@
-#Set our working directory. 
-#This helps avoid confusion if our working directory is 
-#not our site because of other projects we were 
-#working on at the time. 
+#' This scripts run two scrappers
+#' Load updated .html from scrappers 
+#' Render the repo
 setwd("/Anyela/repo/comptpbio.github.io")
 system("../../phantomjs-2.1.1-windows/bin/phantomjs.exe scrapper/nerc.js")
 system("../../phantomjs-2.1.1-windows/bin/phantomjs.exe scrapper/bbsrc.js")
