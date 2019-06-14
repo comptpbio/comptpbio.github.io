@@ -34,12 +34,23 @@ url <- read_html("scrapper/bbsrc.html") %>%
   
 
 date <- read_html("scrapper/bbsrc.html") %>%
-  html_nodes("time") %>%
+  html_nodes("div") %>%
   html_text()
 
+u <- c()
+for(cname in call){
+  
+  i <- grep(cname, date)
+  if(length(i) == 0){
+    u <- rbind(u, 'check web')
+  } else{
+    u <- rbind(u, strsplit(strsplit(date[i[length(i)]], '\n\n\n')[[1]][2], 
+                         '\n\n')[[1]])
+  }
+}
 
-
-calltable <- data.frame(callname = call, deadline = date, call_url = paste('https://www.bbsrc.ac.uk', url, sep=''))
+calltable <- data.frame(callname = call, deadline = u, 
+                        call_url = paste('https://www.bbsrc.ac.uk', url, sep=''))
 ```
 
 ```{r echo=FALSE, include=TRUE, results='asis'}
